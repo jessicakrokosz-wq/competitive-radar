@@ -138,7 +138,7 @@
     <button class="notif-btn" onclick="showPage('alerts',document.querySelector('.nav-links button:nth-child(2)'))">
       !<span class="notif-badge" id="notifCount">2</span>
     </button>
-    <div class="nav-user">Jess Krokosz &nbsp;|&nbsp; Product Strategy</div>
+    <div class="nav-user">J. Morris &nbsp;|&nbsp; Product Strategy</div>
   </div>
 </nav>
 
@@ -592,22 +592,23 @@ function stripTags(s) {
 function fetchLiveNews() {
   document.getElementById('newsFeed').innerHTML = '<div class="news-loading">Fetching live news...</div>';
 
-  // Carrier-specific and telecom-focused RSS feeds
+  // Targeted Google News queries for exactly the content we want
   var feeds = [
-    { url: 'https://www.fiercewireless.com/rss/xml', label: 'FierceWireless' },
-    { url: 'https://techcrunch.com/tag/t-mobile/feed/', label: 'TechCrunch' },
-    { url: 'https://techcrunch.com/tag/at-t/feed/', label: 'TechCrunch' },
-    { url: 'https://techcrunch.com/tag/verizon/feed/', label: 'TechCrunch' },
-    { url: 'https://www.androidcentral.com/phones/t-mobile/feed', label: 'Android Central' },
-    { url: 'https://www.androidcentral.com/phones/att/feed', label: 'Android Central' }
+    'https://news.google.com/rss/search?q=T-Mobile+AT%26T+Verizon+phone+plan+price+promotion&hl=en-US&gl=US&ceid=US:en',
+    'https://news.google.com/rss/search?q=wireless+carrier+device+protection+phone+insurance&hl=en-US&gl=US&ceid=US:en',
+    'https://news.google.com/rss/search?q=new+smartphone+carrier+deal+trade-in+unlimited+plan&hl=en-US&gl=US&ceid=US:en',
+    'https://news.google.com/rss/search?q=T-Mobile+AT%26T+Verizon+free+phone+switch+promo+2026&hl=en-US&gl=US&ceid=US:en'
   ];
-  var telecomKeywords = ['t-mobile','at&t','att','verizon','comcast','xfinity','boost','dish','wireless','carrier','5g','unlimited','phone plan','mobile plan','promotion','promo','device protection','port','prepaid','postpaid','telecom'];
+
+  // Must mention a carrier AND a relevant category to be included
+  var carrierKW = ['t-mobile','at&t','verizon','comcast','xfinity','boost','dish','sprint'];
+  var categoryKW = ['plan','price','deal','promo','promotion','insurance','protection','unlimited','trade-in','discount','free phone','switch','upgrade','5g','prepaid','device','new phone','coverage'];
 
   var pending = feeds.length;
   var collected = [];
 
   feeds.forEach(function(feed) {
-    var proxyUrl = 'https://corsproxy.io/?' + encodeURIComponent(feed.url);
+    var proxyUrl = 'https://corsproxy.io/?' + encodeURIComponent(feed);
 
     fetch(proxyUrl)
       .then(function(r) { return r.text(); })
@@ -624,16 +625,11 @@ function fetchLiveNews() {
           var title = titleEl ? titleEl.textContent.trim() : '';
           if (!title) continue;
 
-          // Get URL — try <link> first, then <id>, then <guid>
+          // Get URL from <link> tag
           var url = '';
           var linkEls = item.getElementsByTagName('link');
           if (linkEls.length > 0) {
-            // Atom <link href="..."> or RSS <link>text</link>
-            url = linkEls[0].getAttribute('href') || linkEls[0].textContent.trim();
-          }
-          if (!url || url.indexOf('http') !== 0) {
-            var idEl = item.getElementsByTagName('id')[0];
-            url = idEl ? idEl.textContent.trim() : '';
+            url = (linkEls[0].getAttribute('href') || linkEls[0].textContent || '').trim();
           }
           if (!url || url.indexOf('http') !== 0) continue;
 
@@ -643,10 +639,11 @@ function fetchLiveNews() {
           var descEl = item.getElementsByTagName('description')[0] || item.getElementsByTagName('summary')[0] || item.getElementsByTagName('content')[0];
           var desc = descEl ? stripTags(descEl.textContent).substring(0, 130) + '...' : '';
 
-          // Only keep articles relevant to wireless/telecom
+          // Must mention a carrier AND a plan/price/device/insurance category
           var titleLower = title.toLowerCase();
-          var isRelevant = telecomKeywords.some(function(kw) { return titleLower.indexOf(kw) !== -1; });
-          if (!isRelevant) continue;
+          var hasCarrier = carrierKW.some(function(kw) { return titleLower.indexOf(kw) !== -1; });
+          var hasCategory = categoryKW.some(function(kw) { return titleLower.indexOf(kw) !== -1; });
+          if (!hasCarrier && !hasCategory) continue;
 
           var cls = classifySource(title, url);
           collected.push({

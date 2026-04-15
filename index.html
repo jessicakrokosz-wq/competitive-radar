@@ -592,13 +592,16 @@ function stripTags(s) {
 function fetchLiveNews() {
   document.getElementById('newsFeed').innerHTML = '<div class="news-loading">Fetching live news...</div>';
 
-  // Real telecom RSS feeds with direct article URLs
+  // Carrier-specific and telecom-focused RSS feeds
   var feeds = [
     { url: 'https://www.fiercewireless.com/rss/xml', label: 'FierceWireless' },
     { url: 'https://techcrunch.com/tag/t-mobile/feed/', label: 'TechCrunch' },
-    { url: 'https://techcrunch.com/tag/att/feed/', label: 'TechCrunch' },
-    { url: 'https://www.theverge.com/rss/index.xml', label: 'The Verge' }
+    { url: 'https://techcrunch.com/tag/at-t/feed/', label: 'TechCrunch' },
+    { url: 'https://techcrunch.com/tag/verizon/feed/', label: 'TechCrunch' },
+    { url: 'https://www.androidcentral.com/phones/t-mobile/feed', label: 'Android Central' },
+    { url: 'https://www.androidcentral.com/phones/att/feed', label: 'Android Central' }
   ];
+  var telecomKeywords = ['t-mobile','at&t','att','verizon','comcast','xfinity','boost','dish','wireless','carrier','5g','unlimited','phone plan','mobile plan','promotion','promo','device protection','port','prepaid','postpaid','telecom'];
 
   var pending = feeds.length;
   var collected = [];
@@ -639,6 +642,11 @@ function fetchLiveNews() {
 
           var descEl = item.getElementsByTagName('description')[0] || item.getElementsByTagName('summary')[0] || item.getElementsByTagName('content')[0];
           var desc = descEl ? stripTags(descEl.textContent).substring(0, 130) + '...' : '';
+
+          // Only keep articles relevant to wireless/telecom
+          var titleLower = title.toLowerCase();
+          var isRelevant = telecomKeywords.some(function(kw) { return titleLower.indexOf(kw) !== -1; });
+          if (!isRelevant) continue;
 
           var cls = classifySource(title, url);
           collected.push({

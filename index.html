@@ -591,52 +591,66 @@ function stripTags(s) {
 
 function fetchLiveNews() {
   document.getElementById('newsFeed').innerHTML = '<div class="news-loading">Fetching live news...</div>';
-  var queries = [
-    'T-Mobile wireless promotion deal',
-    'AT&T wireless promotion deal',
-    'Comcast Xfinity wireless mobile',
-    'wireless carrier telecom competition Verizon'
+
+  // Real telecom RSS feeds with direct article URLs
+  var feeds = [
+    { url: 'https://www.fiercewireless.com/rss/xml', label: 'FierceWireless' },
+    { url: 'https://techcrunch.com/tag/t-mobile/feed/', label: 'TechCrunch' },
+    { url: 'https://techcrunch.com/tag/att/feed/', label: 'TechCrunch' },
+    { url: 'https://www.theverge.com/rss/index.xml', label: 'The Verge' }
   ];
-  var pending = queries.length;
+
+  var pending = feeds.length;
   var collected = [];
 
-  queries.forEach(function(q) {
-    var rssUrl = 'https://news.google.com/rss/search?q=' + encodeURIComponent(q) + '&hl=en-US&gl=US&ceid=US:en';
-    var proxyUrl = 'https://corsproxy.io/?' + encodeURIComponent(rssUrl);
+  feeds.forEach(function(feed) {
+    var proxyUrl = 'https://corsproxy.io/?' + encodeURIComponent(feed.url);
 
     fetch(proxyUrl)
       .then(function(r) { return r.text(); })
       .then(function(text) {
         var xml = (new DOMParser()).parseFromString(text, 'text/xml');
-        var items = xml.querySelectorAll('item');
-        items.forEach(function(item) {
-          var title = item.querySelector('title') ? item.querySelector('title').textContent : '';
-          var pubDate = item.querySelector('pubDate') ? item.querySelector('pubDate').textContent : '';
-          var desc = item.querySelector('description') ? stripTags(item.querySelector('description').textContent) : '';
-          var url = rssUrl;
-          var children = item.childNodes;
-          for (var j = 0; j < children.length; j++) {
-            if (children[j].nodeName === 'link') {
-              var linkText = (children[j].textContent || children[j].nodeValue || '').trim();
-              if (linkText.indexOf('http') === 0) { url = linkText; break; }
-            }
+        var items = xml.getElementsByTagName('item');
+        // Also handle Atom feeds (Verge uses Atom)
+        if (items.length === 0) items = xml.getElementsByTagName('entry');
+
+        for (var i = 0; i < Math.min(items.length, 6); i++) {
+          var item = items[i];
+
+          var titleEl = item.getElementsByTagName('title')[0];
+          var title = titleEl ? titleEl.textContent.trim() : '';
+          if (!title) continue;
+
+          // Get URL — try <link> first, then <id>, then <guid>
+          var url = '';
+          var linkEls = item.getElementsByTagName('link');
+          if (linkEls.length > 0) {
+            // Atom <link href="..."> or RSS <link>text</link>
+            url = linkEls[0].getAttribute('href') || linkEls[0].textContent.trim();
           }
-          if (url === rssUrl) {
-            var guid = item.querySelector('guid') ? item.querySelector('guid').textContent.trim() : '';
-            if (guid.indexOf('http') === 0) url = guid;
+          if (!url || url.indexOf('http') !== 0) {
+            var idEl = item.getElementsByTagName('id')[0];
+            url = idEl ? idEl.textContent.trim() : '';
           }
-          if (!title) return;
+          if (!url || url.indexOf('http') !== 0) continue;
+
+          var pubDateEl = item.getElementsByTagName('pubDate')[0] || item.getElementsByTagName('updated')[0] || item.getElementsByTagName('published')[0];
+          var pubDate = pubDateEl ? pubDateEl.textContent.trim() : '';
+
+          var descEl = item.getElementsByTagName('description')[0] || item.getElementsByTagName('summary')[0] || item.getElementsByTagName('content')[0];
+          var desc = descEl ? stripTags(descEl.textContent).substring(0, 130) + '...' : '';
+
           var cls = classifySource(title, url);
           collected.push({
             title: title,
             url: url,
-            snippet: desc.substring(0, 130) + '...',
+            snippet: desc,
             time: timeAgo(pubDate),
             pubDate: pubDate,
             source: cls.source,
             sourceLabel: cls.label
           });
-        });
+        }
       })
       .catch(function() {})
       .finally(function() {

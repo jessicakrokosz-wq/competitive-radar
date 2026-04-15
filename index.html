@@ -613,8 +613,18 @@ function fetchLiveNews() {
           var title = item.querySelector('title') ? item.querySelector('title').textContent : '';
           var pubDate = item.querySelector('pubDate') ? item.querySelector('pubDate').textContent : '';
           var desc = item.querySelector('description') ? stripTags(item.querySelector('description').textContent) : '';
-          var guid = item.querySelector('guid') ? item.querySelector('guid').textContent : '';
-          var url = guid.indexOf('http') === 0 ? guid : rssUrl;
+          var url = rssUrl;
+          var children = item.childNodes;
+          for (var j = 0; j < children.length; j++) {
+            if (children[j].nodeName === 'link') {
+              var linkText = (children[j].textContent || children[j].nodeValue || '').trim();
+              if (linkText.indexOf('http') === 0) { url = linkText; break; }
+            }
+          }
+          if (url === rssUrl) {
+            var guid = item.querySelector('guid') ? item.querySelector('guid').textContent.trim() : '';
+            if (guid.indexOf('http') === 0) url = guid;
+          }
           if (!title) return;
           var cls = classifySource(title, url);
           collected.push({

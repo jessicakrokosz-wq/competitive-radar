@@ -138,7 +138,7 @@
     <button class="notif-btn" onclick="showPage('alerts',document.querySelector('.nav-links button:nth-child(2)'))">
       !<span class="notif-badge" id="notifCount">2</span>
     </button>
-    <div class="nav-user">Jess Krokosz &nbsp;|&nbsp; Product Strategy</div>
+    <div class="nav-user">Verizon &nbsp;|&nbsp; Competitive Intelligence</div>
   </div>
 </nav>
 
@@ -153,10 +153,10 @@
   </div>
   <div style="max-width:1200px;margin:0 auto;padding:28px 32px;">
     <div class="stats">
-      <div class="stat"><div class="val" id="stat1">7</div><div class="lbl">New Alerts This Week</div><div class="delta neg" id="stat1d">3 from last week</div></div>
-      <div class="stat"><div class="val" id="stat2">2</div><div class="lbl">High Urgency Actions</div><div class="delta neg">Respond within 48h</div></div>
-      <div class="stat"><div class="val">+1.8%</div><div class="lbl">Estimated Port-Out Risk</div><div class="delta neg">T-Mobile promo impact</div></div>
-      <div class="stat"><div class="val">4</div><div class="lbl">Teams with Open Actions</div><div class="delta neu">Pricing, Marketing, CX, Product</div></div>
+      <div class="stat"><div class="val" id="stat1">—</div><div class="lbl">Live Alerts Loaded</div><div class="delta neu" id="stat1d">Updates on refresh</div></div>
+      <div class="stat"><div class="val" id="stat2">—</div><div class="lbl">High Urgency Alerts</div><div class="delta neg">Respond within 24h</div></div>
+      <div class="stat"><div class="val">4</div><div class="lbl">Competitors Monitored</div><div class="delta neu">T-Mobile, AT&amp;T, Verizon, Comcast</div></div>
+      <div class="stat"><div class="val">Live</div><div class="lbl">Data Source</div><div class="delta pos">Google News RSS</div></div>
     </div>
     <div class="grid-2">
       <div class="card">
@@ -233,26 +233,21 @@
   </div>
   <div style="max-width:1200px;margin:0 auto;padding:28px 32px;">
     <div class="brief-dark">
-      <div class="brief-block">
-        <h3>What Changed This Week</h3>
-        <ul>
-          <li>T-Mobile launched $35/mo unlimited + free device promo</li>
-          <li>AT&amp;T cut device protection price 30% to $9.99/mo</li>
-          <li>T-Mobile quietly expanded 55+ plan to 12 Midwest markets</li>
-          <li>Comcast Mobile began bundle offer testing in Northeast</li>
-        </ul>
+      <div class="brief-block" id="briefPageHeadlines">
+        <h3>Latest Headlines</h3>
+        <ul><li>Loading live news...</li></ul>
       </div>
       <div class="brief-block">
-        <h3>What It Means</h3>
-        <p>Combined moves create pressure on plan acquisition and device protection attach. Estimated 1.8% incremental port-out risk in 30 days if no response. 55+ segment most exposed. AT&amp;T protection price now undercuts VMP entry tier by $4/mo.</p>
+        <h3>What To Watch</h3>
+        <p>Review live alerts for competitor plan pricing, device deals, and protection offer changes. Assess impact on Verizon positioning and VMP attach rates. Check the Alerts tab for full detail on each story.</p>
       </div>
       <div class="brief-block">
-        <h3>Decisions Needed</h3>
+        <h3>Suggested Actions</h3>
         <ul>
-          <li>Respond to AT&amp;T protection price drop? (Pricing)</li>
-          <li>Activate 55+ counter-messaging in Midwest? (Marketing)</li>
-          <li>Escalate T-Mobile promo to VP? (Product Strategy)</li>
-          <li>Monitor Comcast bundle test? (Product)</li>
+          <li>Compare competitor plan prices to current Verizon offers (Pricing)</li>
+          <li>Review device protection pricing vs. competitors (VMP Product)</li>
+          <li>Update rep talking points based on latest news (CX / Care)</li>
+          <li>Flag high-urgency alerts to VP if needed (Product Strategy)</li>
         </ul>
       </div>
     </div>
@@ -273,18 +268,18 @@
       <table>
         <thead><tr><th>Competitor</th><th>Recent Activity</th><th>Threat Level</th><th>Primary Exposure</th><th>Port-Out Risk</th><th>Last Updated</th></tr></thead>
         <tbody>
-          <tr><td class="comp-name">T-Mobile</td><td>Device promo + 55+ expansion</td><td><span class="badge threat">High Threat</span></td><td>Mid-tier unlimited, 55+ segment</td><td style="color:#CC0000;font-weight:600;">+1.2%</td><td>Apr 15, 2026</td></tr>
-          <tr><td class="comp-name">AT&amp;T</td><td>Device protection cut to $9.99</td><td><span class="badge threat">High Threat</span></td><td>VMP / Device protection</td><td style="color:#CC0000;font-weight:600;">+0.6%</td><td>Apr 15, 2026</td></tr>
-          <tr><td class="comp-name">Comcast Mobile</td><td>Bundle offer testing, Northeast</td><td><span class="badge watch">Watch</span></td><td>Broadband bundle customers</td><td style="color:#f0a500;font-weight:600;">+0.3%</td><td>Apr 14, 2026</td></tr>
-          <tr><td class="comp-name">Dish / Boost</td><td>No significant changes</td><td><span class="badge stable">Stable</span></td><td>Prepaid / low-tier</td><td style="color:#2a9d2a;font-weight:600;">+0.0%</td><td>Apr 12, 2026</td></tr>
+          <tr><td class="comp-name">T-Mobile</td><td>See live alerts</td><td><span class="badge watch">Monitor</span></td><td>Plans, devices, promotions</td><td style="color:#888;font-weight:600;">—</td><td>Live</td></tr>
+          <tr><td class="comp-name">AT&amp;T</td><td>See live alerts</td><td><span class="badge watch">Monitor</span></td><td>Device protection, pricing</td><td style="color:#888;font-weight:600;">—</td><td>Live</td></tr>
+          <tr><td class="comp-name">Comcast Mobile</td><td>See live alerts</td><td><span class="badge stable">Stable</span></td><td>Bundle customers</td><td style="color:#888;font-weight:600;">—</td><td>Live</td></tr>
+          <tr><td class="comp-name">Dish / Boost</td><td>Prepaid segment</td><td><span class="badge stable">Stable</span></td><td>Prepaid / low-tier</td><td style="color:#888;font-weight:600;">—</td><td>Live</td></tr>
         </tbody>
       </table>
     </div>
     <div class="stats">
-      <div class="stat"><div class="val">2</div><div class="lbl">High Threat Competitors</div><div class="delta neg">Up from 1 last week</div></div>
-      <div class="stat"><div class="val">+1.8%</div><div class="lbl">Total Port-Out Risk</div><div class="delta neg">Combined estimate</div></div>
+      <div class="stat"><div class="val" id="sc-high">—</div><div class="lbl">High Urgency Alerts</div><div class="delta neg">From live news</div></div>
+      <div class="stat"><div class="val" id="sc-total">—</div><div class="lbl">Total Live Alerts</div><div class="delta neu">Updates on refresh</div></div>
       <div class="stat"><div class="val">4</div><div class="lbl">Competitors Tracked</div><div class="delta neu">Real-time monitoring</div></div>
-      <div class="stat"><div class="val">24/7</div><div class="lbl">Monitoring Frequency</div><div class="delta pos">All sources active</div></div>
+      <div class="stat"><div class="val">Live</div><div class="lbl">Data Source</div><div class="delta pos">Google News RSS</div></div>
     </div>
   </div>
 </div>
@@ -338,21 +333,13 @@
 <div class="toast" id="toast"></div>
 
 <script>
-var alerts = [
-  {id:1, urgency:'high', competitor:'T-Mobile', title:'T-Mobile: New $35/mo Unlimited + Free Device Promo', desc:'Launched April 13. Targets 25-40 age segment. Free Galaxy S25 with trade-in on lines 3+. Directly competes with Verizon myPlan Unlimited.', meta:'Detected via T-Mobile.com - Confirmed on Reddit - 1,200+ mentions in 12h', rec:'Recommended: Pricing team review myPlan counter-offer within 48h', status:'open', detail:'This promo was soft-launched Monday April 13 with limited regional promotion, then pushed nationally by Tuesday. Social volume grew 3x within 6 hours. Primary target appears to be 25-35 urban demographics on competitor entry plans.'},
-  {id:2, urgency:'high', competitor:'AT&T', title:'AT&T: Device Protection Price Drop to $9.99/mo', desc:'AT&T Protect Advantage reduced from $14/mo to $9.99 for new lines. Undercuts VMP entry tier. Social sentiment trending positive for AT&T.', meta:'Detected via ATT.com - Confirmed on Twitter - 3 hrs ago', rec:'Recommended: VMP product team assess bundling or value-add response', status:'open', detail:'Price change confirmed on AT&T.com as of April 15 at 6:14 AM. The $9.99 price applies to new activations only. This directly undercuts VMP lowest tier by $4/mo.'},
-  {id:3, urgency:'medium', competitor:'T-Mobile', title:'T-Mobile: 55+ Essentials Plan Expanded to 12 Midwest Markets', desc:'Silent expansion of the 55+ plan into Midwest markets. Verizon 55+ segment shows lowest VMP attach rate.', meta:'Detected via market monitoring - 2 days ago', rec:'Recommended: CX team review 55+ segment messaging', status:'assigned', detail:'Expansion confirmed via T-Mobile store locator changes and regional ad placements. Markets added: Columbus, Indianapolis, Kansas City, St. Louis, Milwaukee, Minneapolis, Des Moines, Omaha, Wichita, Tulsa, Little Rock, Memphis.'},
-  {id:4, urgency:'medium', competitor:'Comcast', title:'Comcast Mobile: Bundle Offer Testing in Northeast', desc:'Comcast testing wireless + internet bundle pricing in Northeast with $20 discount for Xfinity broadband customers.', meta:'Detected via Xfinity.com A/B test monitoring - 3 days ago', rec:'Recommended: Monitor for national expansion signal', status:'open', detail:'A/B test detected on Xfinity.com checkout flow for markets in MA, CT, RI, NY, NJ, and PA. Bundle discount is $20/mo off wireless for existing Xfinity internet customers.'},
-  {id:5, urgency:'low', competitor:'AT&T', title:'AT&T: Updated FirstNet Pricing Page Copy', desc:'Minor copy changes emphasizing reliability over price. No structural plan changes detected.', meta:'Detected via web scraper - 4 days ago', rec:'No immediate action required', status:'done', detail:'Copy changes appear to be A/B testing new value messaging. No price changes. Monitoring for follow-on media campaign.'},
-  {id:6, urgency:'low', competitor:'Dish', title:'Dish / Boost: Spring Prepaid Sale Active', desc:'Boost Mobile running 50% off first 3 months on select prepaid plans through April 30.', meta:'Detected via BoostMobile.com - 5 days ago', rec:'Low risk — prepaid segment only', status:'open', detail:'Standard seasonal promotion. Limited to prepaid entry plans. No impact expected on VMP or postpaid customer base.'},
-];
+var alerts = [];
 
 var teamActions = [
-  {team:'Pricing', action:'Reviewing myPlan Unlimited counter-offer for T-Mobile promo response', time:'Assigned today', status:'open'},
-  {team:'Marketing', action:'Drafting social response messaging for device protection value story', time:'In progress - Due Apr 16', status:'wip'},
-  {team:'Product (VMP)', action:'Evaluating bundling options vs. AT&T $9.99 protection tier', time:'New - Unassigned', status:'open'},
-  {team:'CX / Care', action:'Preparing rep talking points for T-Mobile price comparison calls', time:'In progress', status:'wip'},
-  {team:'Exec Summary', action:'Weekly one-pager ready for VP review - 2 decisions needed', time:'Ready - Apr 15', status:'done'},
+  {team:'Pricing', action:'Review and update based on latest competitor pricing news', time:'Pending', status:'open'},
+  {team:'Marketing', action:'Monitor competitor promotions and update messaging accordingly', time:'Ongoing', status:'wip'},
+  {team:'Product (VMP)', action:'Assess device protection competitive landscape from live alerts', time:'Ongoing', status:'wip'},
+  {team:'CX / Care', action:'Review latest competitor moves for rep talking points', time:'Pending', status:'open'},
 ];
 
 var activeTab = 'all';
@@ -406,17 +393,15 @@ function renderTeamFeed() {
 }
 
 function renderBrief() {
+  var top = liveNews.slice(0, 3);
+  var items = top.length ? top.map(function(n) { return '<li>' + escHtml(n.title) + '</li>'; }).join('') : '<li>Loading live news...</li>';
   document.getElementById('briefBlock').innerHTML =
-    '<div class="brief-block"><h3>What Changed</h3><ul>' +
-    '<li>T-Mobile launched $35/mo unlimited + free device promo</li>' +
-    '<li>AT&T cut device protection price 30% to $9.99/mo</li>' +
-    '<li>T-Mobile 55+ plan expanded to 12 Midwest markets</li>' +
-    '</ul></div>' +
-    '<div class="brief-block"><h3>What It Means</h3><p>Combined moves create pricing pressure on plan acquisition and device protection attach. Estimated 1.8% incremental port-out risk in next 30 days if no response. 55+ segment most exposed.</p></div>' +
-    '<div class="brief-block"><h3>Decisions Needed</h3><ul>' +
-    '<li>Respond to AT&T protection price drop? (Pricing)</li>' +
-    '<li>Activate 55+ counter-messaging in Midwest? (Marketing)</li>' +
-    '<li>Escalate T-Mobile promo to VP? (Product Strategy)</li>' +
+    '<div class="brief-block"><h3>Latest Headlines</h3><ul>' + items + '</ul></div>' +
+    '<div class="brief-block"><h3>What To Watch</h3><p>Review live alerts for competitor plan pricing, device deals, and protection offer changes. Assess impact on Verizon positioning and VMP attach rates.</p></div>' +
+    '<div class="brief-block"><h3>Suggested Actions</h3><ul>' +
+    '<li>Compare competitor plan prices to current Verizon offers (Pricing)</li>' +
+    '<li>Review device protection pricing vs. competitors (VMP Product)</li>' +
+    '<li>Update rep talking points based on latest news (CX / Care)</li>' +
     '</ul></div>';
 }
 
@@ -538,8 +523,9 @@ function escHtml(s) {
 function classifySource(title, url) {
   var t = (title + ' ' + (url || '')).toLowerCase();
   if (t.indexOf('t-mobile') !== -1 || t.indexOf('tmobile') !== -1) return {source:'tmobile', label:'T-Mobile'};
-  if (t.indexOf('at&t') !== -1 || t.indexOf('att.com') !== -1 || t.indexOf('at%26t') !== -1) return {source:'att', label:'AT&T'};
+  if (t.indexOf('at&t') !== -1 || t.indexOf('att.com') !== -1 || t.indexOf('at%26t') !== -1 || t.indexOf('at&amp;t') !== -1 || /\batt\b/.test(t)) return {source:'att', label:'AT&T'};
   if (t.indexOf('comcast') !== -1 || t.indexOf('xfinity') !== -1) return {source:'comcast', label:'Comcast'};
+  if (t.indexOf('verizon') !== -1) return {source:'general', label:'Verizon'};
   return {source:'general', label:'Industry'};
 }
 
@@ -592,12 +578,12 @@ function stripTags(s) {
 function fetchLiveNews() {
   document.getElementById('newsFeed').innerHTML = '<div class="news-loading">Fetching live news...</div>';
 
-  // Targeted Google News queries for exactly the content we want
+  // One dedicated query per competitor so each gets equal coverage
   var feeds = [
-    'https://news.google.com/rss/search?q=T-Mobile+AT%26T+Verizon+phone+plan+price+promotion&hl=en-US&gl=US&ceid=US:en',
-    'https://news.google.com/rss/search?q=wireless+carrier+device+protection+phone+insurance&hl=en-US&gl=US&ceid=US:en',
-    'https://news.google.com/rss/search?q=new+smartphone+carrier+deal+trade-in+unlimited+plan&hl=en-US&gl=US&ceid=US:en',
-    'https://news.google.com/rss/search?q=T-Mobile+AT%26T+Verizon+free+phone+switch+promo+2026&hl=en-US&gl=US&ceid=US:en'
+    'https://news.google.com/rss/search?q=T-Mobile+phone+plan+deal+promotion+price+device&hl=en-US&gl=US&ceid=US:en',
+    'https://news.google.com/rss/search?q=AT%26T+phone+plan+deal+promotion+price+device&hl=en-US&gl=US&ceid=US:en',
+    'https://news.google.com/rss/search?q=Verizon+phone+plan+deal+promotion+price+device&hl=en-US&gl=US&ceid=US:en',
+    'https://news.google.com/rss/search?q=wireless+carrier+device+protection+phone+insurance+unlimited&hl=en-US&gl=US&ceid=US:en'
   ];
 
   // Must mention a carrier AND a relevant category to be included
@@ -643,7 +629,7 @@ function fetchLiveNews() {
           var titleLower = title.toLowerCase();
           var hasCarrier = carrierKW.some(function(kw) { return titleLower.indexOf(kw) !== -1; });
           var hasCategory = categoryKW.some(function(kw) { return titleLower.indexOf(kw) !== -1; });
-          if (!hasCarrier && !hasCategory) continue;
+          if (!hasCarrier || !hasCategory) continue;
 
           var cls = classifySource(title, url);
           collected.push({
@@ -678,11 +664,22 @@ function fetchLiveNews() {
             alerts = newsAlerts.concat(alerts);
             renderDashAlerts();
             renderAlerts();
+            renderBrief();
             var high = alerts.filter(function(a) { return a.urgency === 'high' && a.status === 'open'; }).length;
             document.getElementById('notifCount').textContent = high;
             document.getElementById('stat1').textContent = alerts.length;
             document.getElementById('stat2').textContent = high;
+            document.getElementById('sc-high').textContent = high;
+            document.getElementById('sc-total').textContent = alerts.length;
             document.getElementById('lastUpdated').textContent = 'Monitoring T-Mobile, AT&T, and 4 others · Updated ' + new Date().toLocaleTimeString();
+            // Update Weekly Brief page headlines
+            var briefPage = document.getElementById('briefPageHeadlines');
+            if (briefPage) {
+              var top = liveNews.slice(0, 5);
+              briefPage.innerHTML = '<h3>Latest Headlines</h3><ul>' + top.map(function(n) {
+                return '<li><a href="' + n.url + '" target="_blank" rel="noopener" style="color:#ccc;">' + escHtml(n.title) + '</a></li>';
+              }).join('') + '</ul>';
+            }
           }
         }
       });

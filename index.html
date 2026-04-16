@@ -268,6 +268,7 @@
   <div style="background:#fff;border-bottom:2px solid #eee;padding:0 32px;">
     <div style="max-width:1200px;margin:0 auto;display:flex;gap:0;">
       <button id="sctab-protection" onclick="showScoreTab('protection')" style="padding:14px 22px;font-size:13px;font-weight:600;border:none;background:none;cursor:pointer;border-bottom:3px solid #CC0000;color:#CC0000;font-family:Arial;">Device Protection</button>
+      <button id="sctab-homeprotect" onclick="showScoreTab('homeprotect')" style="padding:14px 22px;font-size:13px;font-weight:600;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;color:#666;font-family:Arial;">Home Protection</button>
       <button id="sctab-mobile" onclick="showScoreTab('mobile')" style="padding:14px 22px;font-size:13px;font-weight:600;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;color:#666;font-family:Arial;">Mobile Plans</button>
       <button id="sctab-home" onclick="showScoreTab('home')" style="padding:14px 22px;font-size:13px;font-weight:600;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;color:#666;font-family:Arial;">Home Internet</button>
     </div>
@@ -306,6 +307,116 @@
           </tbody>
         </table>
       </div>
+    </div>
+
+    <!-- TAB: Home Protection -->
+    <div id="sctab-panel-homeprotect" style="display:none;">
+      <div class="card-head" style="padding:14px 0 10px 0;"><h2 style="font-size:15px;font-weight:600;">Home Tech Protection Plans</h2><span style="font-size:11px;color:#aaa;">Covers home devices (TVs, laptops, appliances) · sourced Apr 2026 · distinct from mobile device protection</span></div>
+      <div class="card" style="margin-bottom:20px;overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th style="color:#CC0000;">Verizon<br><small style="font-weight:400;">Home Device Protect</small></th>
+              <th style="color:#00A8E0;">AT&amp;T<br><small style="font-weight:400;">HomeTech Protection</small></th>
+              <th>Asurion<br><small style="font-weight:400;">Tech Care (standalone)</small></th>
+              <th style="color:#E20074;">T-Mobile</th>
+              <th>Xfinity / Boost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Monthly Price</strong></td>
+              <td style="font-weight:700;">~$25/mo<br><small style="color:#aaa;">Add-on to VMP or Fios</small></td>
+              <td style="font-weight:700;">~$25/mo<br><small style="color:#aaa;">Add-on to AT&amp;T service</small></td>
+              <td style="font-weight:700;"><span class="badge stable">$39/mo</span><br><small style="color:#aaa;">5 devices · confirmed live</small></td>
+              <td><span class="badge threat">Not offered</span></td>
+              <td><span class="badge threat">Not offered</span></td>
+            </tr>
+            <tr>
+              <td><strong>Devices Covered</strong></td>
+              <td>TVs, tablets, laptops, gaming consoles, smart home devices, routers, printers, wearables</td>
+              <td>Computers, tablets, TVs, gaming consoles, smart home devices, routers, printers</td>
+              <td><span class="badge stable">Phones, tablets, laptops, TVs, smartwatches, game consoles, headphones, fridges, washers, dryers, ovens, dishwashers</span></td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td><strong>Appliances Covered</strong></td>
+              <td><span class="badge threat">No</span></td>
+              <td><span class="badge threat">No</span></td>
+              <td><span class="badge stable">Yes — fridges, washers, dryers, ovens, dishwashers</span></td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td><strong>Number of Devices</strong></td>
+              <td>Unlimited home devices</td>
+              <td>Unlimited home devices</td>
+              <td>5 devices (base plan)<br><small style="color:#aaa;">Expanded tiers available</small></td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td><strong>Deductible / Service Fee</strong></td>
+              <td>$99 per claim</td>
+              <td>$49 per claim</td>
+              <td>Varies by device and plan</td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td><strong>Claims Limit</strong></td>
+              <td><span class="badge stable">Unlimited</span></td>
+              <td><span class="badge stable">Unlimited</span></td>
+              <td><span class="badge stable">Unlimited</span></td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td><strong>24/7 Tech Support</strong></td>
+              <td><span class="badge stable">Yes — Asurion experts</span></td>
+              <td><span class="badge stable">Yes — Asurion experts</span></td>
+              <td><span class="badge stable">Yes — 24/7 call or chat</span></td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td><strong>Same-Day Repair</strong></td>
+              <td><span class="badge watch">Select markets</span></td>
+              <td><span class="badge watch">Select markets</span></td>
+              <td><span class="badge stable">Yes — as soon as same day</span></td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td><strong>Repair / Replace / Upgrade</strong></td>
+              <td>Repair or replace</td>
+              <td>Repair or replace</td>
+              <td><span class="badge stable">Repair, replace, or upgrade</span></td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td><strong>Requires Carrier Service</strong></td>
+              <td><span class="badge watch">Yes — Verizon wireless or Fios</span></td>
+              <td><span class="badge watch">Yes — AT&amp;T wireless or internet</span></td>
+              <td><span class="badge stable">No — standalone, any carrier</span></td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td><strong>Underwriter / Provider</strong></td>
+              <td>Asurion</td>
+              <td>Asurion</td>
+              <td>Asurion (direct)</td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="font-size:11px;color:#aaa;margin-top:-10px;margin-bottom:20px;">* T-Mobile and Xfinity/Boost do not offer home tech protection plans. Xfinity offers home <em>security</em> monitoring ($10–$65/mo) which is a separate product category. Asurion Tech Care $39/mo pricing confirmed live from asurion.com · Apr 2026.</div>
     </div>
 
     <!-- TAB: Mobile Plans -->
@@ -986,7 +1097,7 @@ function fetchLiveNews() {
 }
 
 function showScoreTab(tab) {
-  var tabs = ['protection','mobile','home'];
+  var tabs = ['protection','homeprotect','mobile','home'];
   tabs.forEach(function(t) {
     var panel = document.getElementById('sctab-panel-' + t);
     var btn = document.getElementById('sctab-' + t);

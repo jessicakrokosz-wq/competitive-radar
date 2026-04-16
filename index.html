@@ -264,17 +264,122 @@
     <div style="color:#aaa;font-size:12px;margin-top:3px;">Live threat assessment across tracked competitors</div>
   </div>
   <div style="max-width:1200px;margin:0 auto;padding:28px 32px;">
-    <div class="card" style="margin-bottom:20px;">
+
+    <!-- Full Plan Comparison Matrix -->
+    <div class="card-head" style="padding:14px 0 10px 0;"><h2 style="font-size:15px;font-weight:600;">Full Plan Comparison Matrix</h2><span style="font-size:11px;color:#aaa;">Current device protection data · sourced Apr 2026 · deductibles vary by device tier</span></div>
+    <div class="card" style="margin-bottom:20px;overflow-x:auto;">
       <table>
-        <thead><tr><th>Competitor</th><th>Recent Activity</th><th>Threat Level</th><th>Primary Exposure</th><th>Port-Out Risk</th><th>Last Updated</th></tr></thead>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th style="color:#CC0000;">Verizon<br><small style="font-weight:400;">Mobile Protect</small></th>
+            <th style="color:#E20074;">T-Mobile<br><small style="font-weight:400;">Protection 360</small></th>
+            <th style="color:#00A8E0;">AT&amp;T<br><small style="font-weight:400;">Protect Advantage</small></th>
+            <th>Xfinity Mobile<br><small style="font-weight:400;">Mobile Care</small></th>
+            <th style="color:#FF6600;">Boost Mobile<br><small style="font-weight:400;">Boost Protect</small></th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td class="comp-name">T-Mobile</td><td>See live alerts</td><td><span class="badge watch">Monitor</span></td><td>Plans, devices, promotions</td><td style="color:#888;font-weight:600;">—</td><td>Live</td></tr>
-          <tr><td class="comp-name">AT&amp;T</td><td>See live alerts</td><td><span class="badge watch">Monitor</span></td><td>Device protection, pricing</td><td style="color:#888;font-weight:600;">—</td><td>Live</td></tr>
-          <tr><td class="comp-name">Comcast Mobile</td><td>See live alerts</td><td><span class="badge stable">Stable</span></td><td>Bundle customers</td><td style="color:#888;font-weight:600;">—</td><td>Live</td></tr>
-          <tr><td class="comp-name">Dish / Boost</td><td>Prepaid segment</td><td><span class="badge stable">Stable</span></td><td>Prepaid / low-tier</td><td style="color:#888;font-weight:600;">—</td><td>Live</td></tr>
+          <tr>
+            <td><strong>Monthly Price</strong></td>
+            <td style="font-weight:700;">$14–$19</td>
+            <td style="font-weight:700;">$7–$25<br><small style="color:#aaa;">Tier 5–6 +$1 Mar 2026</small></td>
+            <td style="font-weight:700;">$16–$25<br><small style="color:#aaa;">Revised Oct 2025</small></td>
+            <td style="font-weight:700;">$7–$15</td>
+            <td style="font-weight:700;">$8–$18</td>
+          </tr>
+          <tr>
+            <td><strong>Screen Repair Deductible</strong></td>
+            <td><span class="badge stable">$0</span></td>
+            <td><span class="badge stable">$0</span></td>
+            <td><span class="badge stable">$0</span></td>
+            <td>$25–$99</td>
+            <td>$29</td>
+          </tr>
+          <tr>
+            <td><strong>Loss / Theft Deductible</strong></td>
+            <td>$99–$249</td>
+            <td>~$99–$249</td>
+            <td>$99–$400<br><small style="color:#aaa;">Up to $400 for foldables</small></td>
+            <td>$25–$200</td>
+            <td>$40–$349</td>
+          </tr>
+          <tr>
+            <td><strong>Claims / Year</strong></td>
+            <td><span class="badge stable">Unlimited</span></td>
+            <td>Up to 5</td>
+            <td><span class="badge stable">Unlimited</span></td>
+            <td>Not published</td>
+            <td>Not published</td>
+          </tr>
+          <tr>
+            <td><strong>Next-Day Delivery</strong></td>
+            <td><span class="badge stable">Yes</span></td>
+            <td><span class="badge stable">Yes</span></td>
+            <td><span class="badge stable">Yes + same-day pickup</span></td>
+            <td><span class="badge watch">Not confirmed</span></td>
+            <td><span class="badge watch">Not confirmed</span></td>
+          </tr>
+          <tr>
+            <td><strong>Same-Day Repair</strong></td>
+            <td><span class="badge stable">Yes — Asurion centers</span></td>
+            <td><span class="badge stable">Yes — authorized locations</span></td>
+            <td><span class="badge stable">Yes — uBreakiFix / Asurion</span></td>
+            <td><span class="badge watch">Not confirmed</span></td>
+            <td><span class="badge watch">Not confirmed</span></td>
+          </tr>
+          <tr>
+            <td><strong>Tech Support</strong></td>
+            <td><span class="badge stable">Yes — 24/7</span></td>
+            <td><span class="badge stable">Yes + McAfee Security</span></td>
+            <td><span class="badge stable">Yes — ProTech experts</span></td>
+            <td><span class="badge threat">Not advertised</span></td>
+            <td><span class="badge stable">Yes — Premium Tech Support</span></td>
+          </tr>
+          <tr>
+            <td><strong>AppleCare Integration</strong></td>
+            <td><span class="badge threat">No</span></td>
+            <td><span class="badge stable">Yes — included for iPhone</span></td>
+            <td><span class="badge threat">No</span></td>
+            <td><span class="badge threat">No</span></td>
+            <td><span class="badge watch">Yes — separate add-on tier</span></td>
+          </tr>
+          <tr>
+            <td><strong>Home Tech Protection Add-on</strong></td>
+            <td><span class="badge stable">Yes</span></td>
+            <td><span class="badge threat">No</span></td>
+            <td><span class="badge threat">No</span></td>
+            <td><span class="badge threat">No</span></td>
+            <td><span class="badge threat">No</span></td>
+          </tr>
+          <tr>
+            <td><strong>Bundled Free in Top Plan</strong></td>
+            <td><span class="badge watch">No — sold separately</span></td>
+            <td><span class="badge watch">No — sold separately</span></td>
+            <td><span class="badge watch">No — sold separately</span></td>
+            <td><span class="badge watch">No — sold separately</span></td>
+            <td><span class="badge watch">No — sold separately</span></td>
+          </tr>
+          <tr>
+            <td><strong>Multi-Device Option</strong></td>
+            <td><span class="badge stable">Yes — up to 3 lines</span></td>
+            <td><span class="badge threat">No</span></td>
+            <td><span class="badge stable">Yes — up to 11 devices</span></td>
+            <td><span class="badge threat">No</span></td>
+            <td><span class="badge threat">No</span></td>
+          </tr>
+          <tr>
+            <td><strong>Underwriter</strong></td>
+            <td>Asurion</td>
+            <td>Assurant</td>
+            <td>Asurion</td>
+            <td>Assurant</td>
+            <td>Likewize</td>
+          </tr>
         </tbody>
       </table>
     </div>
+
     <div class="stats">
       <div class="stat"><div class="val" id="sc-high">—</div><div class="lbl">High Urgency Alerts</div><div class="delta neg">From live news</div></div>
       <div class="stat"><div class="val" id="sc-total">—</div><div class="lbl">Total Live Alerts</div><div class="delta neu">Updates on refresh</div></div>
@@ -293,7 +398,6 @@
   <div style="max-width:900px;margin:0 auto;padding:28px 32px;">
     <div class="settings-section">
       <h3>Alert Notifications</h3>
-      <div class="setting-row"><div><div class="setting-label">High urgency Slack alerts</div><div class="setting-desc">Instantly notify team channel when a high threat is detected</div></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
       <div class="setting-row"><div><div class="setting-label">Daily digest email</div><div class="setting-desc">Send a summary email every morning at 8 AM</div></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
       <div class="setting-row"><div><div class="setting-label">Weekly brief auto-generate</div><div class="setting-desc">Auto-publish AI brief every Monday at 7 AM</div></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
       <div class="setting-row"><div><div class="setting-label">Low urgency alerts</div><div class="setting-desc">Include low-urgency signals in the feed</div></div><label class="toggle"><input type="checkbox"><span class="toggle-slider"></span></label></div>
@@ -307,7 +411,6 @@
     </div>
     <div class="settings-section">
       <h3>Team Routing</h3>
-      <div class="setting-row"><div><div class="setting-label">Pricing alerts to Pricing team Slack</div></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
       <div class="setting-row"><div><div class="setting-label">Device protection alerts to VMP Product</div></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
       <div class="setting-row"><div><div class="setting-label">Sentiment spikes to Marketing</div></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
     </div>
@@ -361,7 +464,6 @@ function alertHTML(a, full) {
     actions = '<div class="alert-actions" onclick="event.stopPropagation()">' +
       '<button class="act-btn ' + (a.status === 'assigned' ? 'assigned' : '') + '" onclick="assignAlert(' + a.id + ')">' + (a.status === 'assigned' ? 'Assigned' : 'Assign to Team') + '</button>' +
       '<button class="act-btn" onclick="markDone(' + a.id + ')">Mark Done</button>' +
-      '<button class="act-btn" onclick="showToast(\'Shared to Slack\')">Share to Slack</button>' +
       '</div>';
   }
   return '<div class="alert-item ' + (a.status === 'done' ? 'done' : '') + '" id="alert-' + a.id + '" onclick="openModal(' + a.id + ')">' +
@@ -525,35 +627,73 @@ function classifySource(title, url) {
   if (t.indexOf('t-mobile') !== -1 || t.indexOf('tmobile') !== -1) return {source:'tmobile', label:'T-Mobile'};
   if (t.indexOf('at&t') !== -1 || t.indexOf('att.com') !== -1 || t.indexOf('at%26t') !== -1 || t.indexOf('at&amp;t') !== -1 || /\batt\b/.test(t)) return {source:'att', label:'AT&T'};
   if (t.indexOf('comcast') !== -1 || t.indexOf('xfinity') !== -1) return {source:'comcast', label:'Comcast'};
-  if (t.indexOf('verizon') !== -1) return {source:'general', label:'Verizon'};
   return {source:'general', label:'Industry'};
 }
 
-function classifyUrgency(title) {
-  var t = title.toLowerCase();
-  var highWords = ['free','deal','promo','promotion','discount','sale','launch','cut','drop','unlimited','port','switch','%off','% off','flash','limited'];
-  var medWords = ['expand','new plan','update','trial','test','bundle','adds','added'];
-  for (var i = 0; i < highWords.length; i++) { if (t.indexOf(highWords[i]) !== -1) return 'high'; }
-  for (var i = 0; i < medWords.length; i++) { if (t.indexOf(medWords[i]) !== -1) return 'medium'; }
-  return 'low';
+function analyzeArticle(title, snippet) {
+  var t = (title + ' ' + (snippet || '')).toLowerCase();
+
+  // Score urgency across multiple dimensions
+  var score = 0;
+  var risks = [];
+
+  // Price aggression
+  if (/\$\d+/.test(t))                                          { score += 2; }
+  if (/price cut|price drop|price reduc|slash|cheaper|lower price/.test(t)) { score += 3; risks.push('price cut'); }
+  if (/free (phone|device|iphone|samsung|galaxy|pixel|motorola)/.test(t))   { score += 3; risks.push('free device offer'); }
+  if (/trade.?in/.test(t))                                      { score += 2; risks.push('trade-in promotion'); }
+  if (/switch|port.?in|leave.*verizon|ditch.*verizon/.test(t))  { score += 3; risks.push('switching incentive'); }
+  if (/protect|insurance|asurion|coverage plan/.test(t))        { score += 2; risks.push('device protection'); }
+  if (/unlimited/.test(t))                                      { score += 1; risks.push('unlimited plan'); }
+  if (/deal|promo|promotion|offer|discount/.test(t))            { score += 1; }
+  if (/launch|new plan|introduc|announc/.test(t))               { score += 1; risks.push('new offer'); }
+  if (/expand|nationwide|new market/.test(t))                   { score += 1; risks.push('market expansion'); }
+  if (/\d+%\s*off|half.?off|50% |buy one get/.test(t))         { score += 2; risks.push('discount promotion'); }
+
+  var urgency = score >= 5 ? 'high' : score >= 2 ? 'medium' : 'low';
+
+  // Build specific risk description
+  var riskDesc = '';
+  var primaryRisk = risks[0] || 'competitive activity';
+
+  if (primaryRisk === 'price cut')           riskDesc = 'Competitor reducing prices — potential pressure on Verizon plan pricing and subscriber retention.';
+  else if (primaryRisk === 'free device offer')   riskDesc = 'Competitor offering free devices — direct threat to Verizon device acquisition and upgrade cycles.';
+  else if (primaryRisk === 'switching incentive') riskDesc = 'Competitor actively targeting port-ins — elevated churn risk for Verizon postpaid subscribers.';
+  else if (primaryRisk === 'device protection')   riskDesc = 'Competitor device protection move — potential impact on VMP attach rates and revenue.';
+  else if (primaryRisk === 'trade-in promotion')  riskDesc = 'Competitor raising trade-in values — competitive threat on device upgrade customers.';
+  else if (primaryRisk === 'unlimited plan')      riskDesc = 'Competitor unlimited plan activity — monitor for pricing and feature comparison exposure.';
+  else if (primaryRisk === 'discount promotion')  riskDesc = 'Competitor running significant discount — risk to Verizon price-sensitive segment.';
+  else if (primaryRisk === 'market expansion')    riskDesc = 'Competitor expanding market presence — monitor for regional subscriber impact.';
+  else                                            riskDesc = 'Competitor activity detected — review for potential Verizon plan or VMP impact.';
+
+  // Build specific recommendation
+  var rec = '';
+  if (urgency === 'high') {
+    if (primaryRisk === 'device protection') rec = 'Escalate to VMP Product team — assess pricing and bundling response within 24h.';
+    else if (primaryRisk === 'switching incentive' || primaryRisk === 'free device offer') rec = 'Alert Pricing and Marketing — evaluate counter-promotion within 24h.';
+    else if (primaryRisk === 'price cut') rec = 'Flag to Pricing team — compare against current Verizon plan pricing immediately.';
+    else rec = 'Review with Pricing and Marketing within 24h.';
+  } else if (urgency === 'medium') {
+    if (primaryRisk === 'device protection') rec = 'Brief VMP team — track for pricing or feature response this week.';
+    else rec = 'Monitor closely — brief relevant team this week.';
+  } else {
+    rec = 'No immediate action required — log for weekly competitive review.';
+  }
+
+  return { urgency: urgency, riskDesc: riskDesc, rec: rec };
 }
 
 function newsToAlert(n, id) {
   var competitorMap = {tmobile:'T-Mobile', att:'AT&T', comcast:'Comcast', general:'Industry'};
-  var urgency = classifyUrgency(n.title);
-  var recMap = {
-    high: 'Recommended: Review with Pricing and Marketing within 24h',
-    medium: 'Recommended: Monitor and assess impact this week',
-    low: 'No immediate action required'
-  };
+  var analysis = analyzeArticle(n.title, n.snippet);
   return {
     id: id,
-    urgency: urgency,
+    urgency: analysis.urgency,
     competitor: competitorMap[n.source] || 'Industry',
     title: n.title,
-    desc: n.snippet,
+    desc: analysis.riskDesc,
     meta: 'Live news — ' + n.time + ' · <a href="' + n.url + '" target="_blank" rel="noopener" style="color:#CC0000;">Source</a>',
-    rec: recMap[urgency],
+    rec: analysis.rec,
     status: 'open',
     detail: n.snippet,
     fromNews: true
@@ -578,17 +718,18 @@ function stripTags(s) {
 function fetchLiveNews() {
   document.getElementById('newsFeed').innerHTML = '<div class="news-loading">Fetching live news...</div>';
 
-  // One dedicated query per competitor so each gets equal coverage
+  // Broad competitor news: plans, perks, network updates, new features
   var feeds = [
-    'https://news.google.com/rss/search?q=T-Mobile+phone+plan+deal+promotion+price+device&hl=en-US&gl=US&ceid=US:en',
-    'https://news.google.com/rss/search?q=AT%26T+phone+plan+deal+promotion+price+device&hl=en-US&gl=US&ceid=US:en',
-    'https://news.google.com/rss/search?q=Verizon+phone+plan+deal+promotion+price+device&hl=en-US&gl=US&ceid=US:en',
-    'https://news.google.com/rss/search?q=wireless+carrier+device+protection+phone+insurance+unlimited&hl=en-US&gl=US&ceid=US:en'
+    'https://news.google.com/rss/search?q=T-Mobile+plan+perk+update+launch+network+promotion+feature&hl=en-US&gl=US&ceid=US:en',
+    'https://news.google.com/rss/search?q=AT%26T+plan+perk+update+launch+network+promotion+feature&hl=en-US&gl=US&ceid=US:en',
+    'https://news.google.com/rss/search?q=Comcast+Xfinity+Mobile+plan+perk+update+launch+promotion&hl=en-US&gl=US&ceid=US:en',
+    'https://news.google.com/rss/search?q=Boost+Mobile+Dish+wireless+plan+perk+update+launch&hl=en-US&gl=US&ceid=US:en',
+    'https://news.google.com/rss/search?q=wireless+carrier+new+plan+perk+5G+network+update+2026&hl=en-US&gl=US&ceid=US:en'
   ];
 
-  // Must mention a carrier AND a relevant category to be included
-  var carrierKW = ['t-mobile','at&t','verizon','comcast','xfinity','boost','dish','sprint'];
-  var categoryKW = ['plan','price','deal','promo','promotion','insurance','protection','unlimited','trade-in','discount','free phone','switch','upgrade','5g','prepaid','device','new phone','coverage'];
+  // Any article mentioning a competitor is relevant
+  var carrierKW = ['t-mobile','at&t','comcast','xfinity','boost','dish','sprint'];
+  var categoryKW = ['plan','price','pricing','deal','promo','promotion','insurance','protection','unlimited','trade-in','discount','free','switch','upgrade','device protection','new phone','phone plan','monthly','perk','perks','benefit','benefits','feature','features','5g','network','launch','announced','roaming','international','streaming','bundle','bundled','hotspot','data','coverage','reward','rewards'];
 
   var pending = feeds.length;
   var collected = [];
@@ -625,11 +766,14 @@ function fetchLiveNews() {
           var descEl = item.getElementsByTagName('description')[0] || item.getElementsByTagName('summary')[0] || item.getElementsByTagName('content')[0];
           var desc = descEl ? stripTags(descEl.textContent).substring(0, 130) + '...' : '';
 
-          // Must mention a carrier AND a plan/price/device/insurance category
+          // Must mention a competitor — category match broadens relevance but is not required
+          // Exclude articles only about Verizon with no competitor mention
           var titleLower = title.toLowerCase();
-          var hasCarrier = carrierKW.some(function(kw) { return titleLower.indexOf(kw) !== -1; });
-          var hasCategory = categoryKW.some(function(kw) { return titleLower.indexOf(kw) !== -1; });
-          if (!hasCarrier || !hasCategory) continue;
+          var descLower = desc.toLowerCase();
+          var combined = titleLower + ' ' + descLower;
+          if (titleLower.indexOf('verizon') !== -1 && carrierKW.every(function(kw){ return combined.indexOf(kw) === -1; })) continue;
+          var hasCarrier = carrierKW.some(function(kw) { return combined.indexOf(kw) !== -1; });
+          if (!hasCarrier) continue;
 
           var cls = classifySource(title, url);
           collected.push({

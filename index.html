@@ -263,121 +263,276 @@
     <div style="color:white;font-size:19px;font-weight:600;">Competitor Scorecard</div>
     <div style="color:#aaa;font-size:12px;margin-top:3px;">Live threat assessment across tracked competitors</div>
   </div>
+
+  <!-- Scorecard Tab Bar -->
+  <div style="background:#fff;border-bottom:2px solid #eee;padding:0 32px;">
+    <div style="max-width:1200px;margin:0 auto;display:flex;gap:0;">
+      <button id="sctab-protection" onclick="showScoreTab('protection')" style="padding:14px 22px;font-size:13px;font-weight:600;border:none;background:none;cursor:pointer;border-bottom:3px solid #CC0000;color:#CC0000;font-family:Arial;">Device Protection</button>
+      <button id="sctab-mobile" onclick="showScoreTab('mobile')" style="padding:14px 22px;font-size:13px;font-weight:600;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;color:#666;font-family:Arial;">Mobile Plans</button>
+      <button id="sctab-home" onclick="showScoreTab('home')" style="padding:14px 22px;font-size:13px;font-weight:600;border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;color:#666;font-family:Arial;">Home Internet</button>
+    </div>
+  </div>
+
   <div style="max-width:1200px;margin:0 auto;padding:28px 32px;">
 
-    <!-- Full Plan Comparison Matrix -->
-    <div class="card-head" style="padding:14px 0 10px 0;"><h2 style="font-size:15px;font-weight:600;">Full Plan Comparison Matrix</h2><span style="font-size:11px;color:#aaa;">Current device protection data · sourced Apr 2026 · deductibles vary by device tier</span></div>
-    <div class="card" style="margin-bottom:20px;overflow-x:auto;">
-      <table>
-        <thead>
-          <tr>
-            <th>Feature</th>
-            <th style="color:#CC0000;">Verizon<br><small style="font-weight:400;">Mobile Protect</small></th>
-            <th style="color:#E20074;">T-Mobile<br><small style="font-weight:400;">Protection 360</small></th>
-            <th style="color:#00A8E0;">AT&amp;T<br><small style="font-weight:400;">Protect Advantage</small></th>
-            <th>Xfinity Mobile<br><small style="font-weight:400;">Mobile Care</small></th>
-            <th style="color:#FF6600;">Boost Mobile<br><small style="font-weight:400;">Boost Protect</small></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Monthly Price</strong></td>
-            <td style="font-weight:700;">$14–$19</td>
-            <td style="font-weight:700;">$7–$25<br><small style="color:#aaa;">Tier 5–6 +$1 Mar 2026</small></td>
-            <td style="font-weight:700;">$16–$25<br><small style="color:#aaa;">Revised Oct 2025</small></td>
-            <td style="font-weight:700;">$7–$15</td>
-            <td style="font-weight:700;">$8–$18</td>
-          </tr>
-          <tr>
-            <td><strong>Screen Repair Deductible</strong></td>
-            <td><span class="badge stable">$0</span></td>
-            <td><span class="badge stable">$0</span></td>
-            <td><span class="badge stable">$0</span></td>
-            <td>$25–$99</td>
-            <td>$29</td>
-          </tr>
-          <tr>
-            <td><strong>Loss / Theft Deductible</strong></td>
-            <td>$99–$249</td>
-            <td>~$99–$249</td>
-            <td>$99–$400<br><small style="color:#aaa;">Up to $400 for foldables</small></td>
-            <td>$25–$200</td>
-            <td>$40–$349</td>
-          </tr>
-          <tr>
-            <td><strong>Claims / Year</strong></td>
-            <td><span class="badge stable">Unlimited</span></td>
-            <td>Up to 5</td>
-            <td><span class="badge stable">Unlimited</span></td>
-            <td>Not published</td>
-            <td>Not published</td>
-          </tr>
-          <tr>
-            <td><strong>Next-Day Delivery</strong></td>
-            <td><span class="badge stable">Yes</span></td>
-            <td><span class="badge stable">Yes</span></td>
-            <td><span class="badge stable">Yes + same-day pickup</span></td>
-            <td><span class="badge watch">Not confirmed</span></td>
-            <td><span class="badge watch">Not confirmed</span></td>
-          </tr>
-          <tr>
-            <td><strong>Same-Day Repair</strong></td>
-            <td><span class="badge stable">Yes — Asurion centers</span></td>
-            <td><span class="badge stable">Yes — authorized locations</span></td>
-            <td><span class="badge stable">Yes — uBreakiFix / Asurion</span></td>
-            <td><span class="badge watch">Not confirmed</span></td>
-            <td><span class="badge watch">Not confirmed</span></td>
-          </tr>
-          <tr>
-            <td><strong>Tech Support</strong></td>
-            <td><span class="badge stable">Yes — 24/7</span></td>
-            <td><span class="badge stable">Yes + McAfee Security</span></td>
-            <td><span class="badge stable">Yes — ProTech experts</span></td>
-            <td><span class="badge threat">Not advertised</span></td>
-            <td><span class="badge stable">Yes — Premium Tech Support</span></td>
-          </tr>
-          <tr>
-            <td><strong>AppleCare Integration</strong></td>
-            <td><span class="badge threat">No</span></td>
-            <td><span class="badge stable">Yes — included for iPhone</span></td>
-            <td><span class="badge threat">No</span></td>
-            <td><span class="badge threat">No</span></td>
-            <td><span class="badge watch">Yes — separate add-on tier</span></td>
-          </tr>
-          <tr>
-            <td><strong>Home Tech Protection Add-on</strong></td>
-            <td><span class="badge stable">Yes</span></td>
-            <td><span class="badge threat">No</span></td>
-            <td><span class="badge threat">No</span></td>
-            <td><span class="badge threat">No</span></td>
-            <td><span class="badge threat">No</span></td>
-          </tr>
-          <tr>
-            <td><strong>Bundled Free in Top Plan</strong></td>
-            <td><span class="badge watch">No — sold separately</span></td>
-            <td><span class="badge watch">No — sold separately</span></td>
-            <td><span class="badge watch">No — sold separately</span></td>
-            <td><span class="badge watch">No — sold separately</span></td>
-            <td><span class="badge watch">No — sold separately</span></td>
-          </tr>
-          <tr>
-            <td><strong>Multi-Device Option</strong></td>
-            <td><span class="badge stable">Yes — up to 3 lines</span></td>
-            <td><span class="badge threat">No</span></td>
-            <td><span class="badge stable">Yes — up to 11 devices</span></td>
-            <td><span class="badge threat">No</span></td>
-            <td><span class="badge threat">No</span></td>
-          </tr>
-          <tr>
-            <td><strong>Underwriter</strong></td>
-            <td>Asurion</td>
-            <td>Assurant</td>
-            <td>Asurion</td>
-            <td>Assurant</td>
-            <td>Likewize</td>
-          </tr>
-        </tbody>
-      </table>
+    <!-- TAB: Device Protection -->
+    <div id="sctab-panel-protection">
+      <div class="card-head" style="padding:14px 0 10px 0;"><h2 style="font-size:15px;font-weight:600;">Device Protection Plans</h2><span style="font-size:11px;color:#aaa;">Sourced Apr 2026 · deductibles vary by device tier</span></div>
+      <div class="card" style="margin-bottom:20px;overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th style="color:#CC0000;">Verizon<br><small style="font-weight:400;">Mobile Protect</small></th>
+              <th style="color:#E20074;">T-Mobile<br><small style="font-weight:400;">Protection 360</small></th>
+              <th style="color:#00A8E0;">AT&amp;T<br><small style="font-weight:400;">Protect Advantage</small></th>
+              <th>Xfinity Mobile<br><small style="font-weight:400;">Mobile Care</small></th>
+              <th style="color:#FF6600;">Boost Mobile<br><small style="font-weight:400;">Boost Protect</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Monthly Price</strong></td><td style="font-weight:700;">$14–$19</td><td style="font-weight:700;">$7–$25<br><small style="color:#aaa;">Tier 5–6 +$1 Mar 2026</small></td><td style="font-weight:700;">$16–$25<br><small style="color:#aaa;">Revised Oct 2025</small></td><td style="font-weight:700;">$7–$15</td><td style="font-weight:700;">$8–$18</td></tr>
+            <tr><td><strong>Screen Repair Deductible</strong></td><td><span class="badge stable">$0</span></td><td><span class="badge stable">$0</span></td><td><span class="badge stable">$0</span></td><td>$25–$99</td><td>$29</td></tr>
+            <tr><td><strong>Loss / Theft Deductible</strong></td><td>$99–$249</td><td>~$99–$249</td><td>$99–$400<br><small style="color:#aaa;">Up to $400 for foldables</small></td><td>$25–$200</td><td>$40–$349</td></tr>
+            <tr><td><strong>Claims / Year</strong></td><td><span class="badge stable">Unlimited</span></td><td>Up to 5</td><td><span class="badge stable">Unlimited</span></td><td>Not published</td><td>Not published</td></tr>
+            <tr><td><strong>Next-Day Delivery</strong></td><td><span class="badge stable">Yes</span></td><td><span class="badge stable">Yes</span></td><td><span class="badge stable">Yes + same-day pickup</span></td><td><span class="badge watch">Not confirmed</span></td><td><span class="badge watch">Not confirmed</span></td></tr>
+            <tr><td><strong>Same-Day Repair</strong></td><td><span class="badge stable">Yes — Asurion centers</span></td><td><span class="badge stable">Yes — authorized locations</span></td><td><span class="badge stable">Yes — uBreakiFix / Asurion</span></td><td><span class="badge watch">Not confirmed</span></td><td><span class="badge watch">Not confirmed</span></td></tr>
+            <tr><td><strong>Tech Support</strong></td><td><span class="badge stable">Yes — 24/7</span></td><td><span class="badge stable">Yes + McAfee Security</span></td><td><span class="badge stable">Yes — ProTech experts</span></td><td><span class="badge threat">Not advertised</span></td><td><span class="badge stable">Yes — Premium Tech Support</span></td></tr>
+            <tr><td><strong>AppleCare Integration</strong></td><td><span class="badge threat">No</span></td><td><span class="badge stable">Yes — included for iPhone</span></td><td><span class="badge threat">No</span></td><td><span class="badge threat">No</span></td><td><span class="badge watch">Yes — separate add-on tier</span></td></tr>
+            <tr><td><strong>Home Tech Protection Add-on</strong></td><td><span class="badge stable">Yes</span></td><td><span class="badge threat">No</span></td><td><span class="badge threat">No</span></td><td><span class="badge threat">No</span></td><td><span class="badge threat">No</span></td></tr>
+            <tr><td><strong>Bundled Free in Top Plan</strong></td><td><span class="badge watch">No — sold separately</span></td><td><span class="badge watch">No — sold separately</span></td><td><span class="badge watch">No — sold separately</span></td><td><span class="badge watch">No — sold separately</span></td><td><span class="badge watch">No — sold separately</span></td></tr>
+            <tr><td><strong>Multi-Device Option</strong></td><td><span class="badge stable">Yes — up to 3 lines</span></td><td><span class="badge threat">No</span></td><td><span class="badge stable">Yes — up to 11 devices</span></td><td><span class="badge threat">No</span></td><td><span class="badge threat">No</span></td></tr>
+            <tr><td><strong>Underwriter</strong></td><td>Asurion</td><td>Assurant</td><td>Asurion</td><td>Assurant</td><td>Likewize</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB: Mobile Plans -->
+    <div id="sctab-panel-mobile" style="display:none;">
+      <div class="card-head" style="padding:14px 0 10px 0;"><h2 style="font-size:15px;font-weight:600;">Unlimited Wireless Plans</h2><span style="font-size:11px;color:#aaa;">1-line pricing · sourced Apr 2026 · taxes/fees extra unless noted</span></div>
+      <div class="card" style="margin-bottom:20px;overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th style="color:#CC0000;">Verizon<br><small style="font-weight:400;">myPlan</small></th>
+              <th style="color:#E20074;">T-Mobile<br><small style="font-weight:400;">Experience Beyond</small></th>
+              <th style="color:#00A8E0;">AT&amp;T<br><small style="font-weight:400;">Unlimited tiers</small></th>
+              <th>Xfinity Mobile<br><small style="font-weight:400;">Unlimited</small></th>
+              <th style="color:#FF6600;">Boost Mobile<br><small style="font-weight:400;">Unlimited tiers</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Entry Unlimited Price</strong></td>
+              <td style="font-weight:700;">~$65/mo<br><small style="color:#aaa;">Welcome Unlimited</small></td>
+              <td style="font-weight:700;">$105/mo<br><small style="color:#aaa;">Experience Beyond (1 line)</small></td>
+              <td style="font-weight:700;">~$65–$75/mo<br><small style="color:#aaa;">Value 2.0</small></td>
+              <td style="font-weight:700;">~$40/mo<br><small style="color:#aaa;">Requires Xfinity internet</small></td>
+              <td style="font-weight:700;"><span class="badge stable">$25/mo</span><br><small style="color:#aaa;">Price locked forever</small></td>
+            </tr>
+            <tr>
+              <td><strong>Top Unlimited Price</strong></td>
+              <td style="font-weight:700;">~$90/mo<br><small style="color:#aaa;">Unlimited Ultimate</small></td>
+              <td style="font-weight:700;">$105/mo<br><small style="color:#aaa;">Single tier for 1 line</small></td>
+              <td style="font-weight:700;">~$95–$105/mo<br><small style="color:#aaa;">Elite 2.0</small></td>
+              <td style="font-weight:700;">~$50/mo<br><small style="color:#aaa;">Unlimited+</small></td>
+              <td style="font-weight:700;">$60/mo<br><small style="color:#aaa;">Unlimited Premium</small></td>
+            </tr>
+            <tr>
+              <td><strong>Premium Hotspot (top tier)</strong></td>
+              <td>60 GB</td>
+              <td>Unlimited premium</td>
+              <td>250 GB</td>
+              <td>Included (from data bucket)</td>
+              <td>50 GB</td>
+            </tr>
+            <tr>
+              <td><strong>5G Access</strong></td>
+              <td><span class="badge stable">Yes — incl. Ultra Wideband</span></td>
+              <td><span class="badge stable">Yes — premium 5G</span></td>
+              <td><span class="badge stable">Yes — incl. AT&amp;T Turbo (Elite)</span></td>
+              <td><span class="badge stable">Yes — Verizon network</span></td>
+              <td><span class="badge stable">Yes — 5G capable</span></td>
+            </tr>
+            <tr>
+              <td><strong>Streaming Perks</strong></td>
+              <td>À la carte (+$10/mo each)<br><small style="color:#aaa;">Disney+, Apple One, etc.</small></td>
+              <td><span class="badge stable">Netflix + Hulu included</span><br><small style="color:#aaa;">Apple TV+ at $3/mo</small></td>
+              <td>HBO Max (select tiers)</td>
+              <td>Peacock Premium (w/ 1 Gig internet bundle)</td>
+              <td>None</td>
+            </tr>
+            <tr>
+              <td><strong>International</strong></td>
+              <td>Day passes (Ultimate tier)</td>
+              <td><span class="badge stable">30 GB Canada/Mexico + 15 GB in 215+ countries</span></td>
+              <td>20 countries free data (Premium); 210+ countries talk/text + 20 GB (Elite)</td>
+              <td>None</td>
+              <td>Canada/Mexico data (Premium tier)</td>
+            </tr>
+            <tr>
+              <td><strong>Satellite Connectivity</strong></td>
+              <td><span class="badge threat">No</span></td>
+              <td><span class="badge stable">Yes — T-Satellite included</span></td>
+              <td><span class="badge threat">No</span></td>
+              <td><span class="badge threat">No</span></td>
+              <td><span class="badge threat">No</span></td>
+            </tr>
+            <tr>
+              <td><strong>Price Lock / Guarantee</strong></td>
+              <td><span class="badge threat">No</span></td>
+              <td><span class="badge stable">5-Year Price Guarantee</span></td>
+              <td><span class="badge threat">No</span></td>
+              <td><span class="badge threat">No</span></td>
+              <td><span class="badge stable">$25 plan locked forever</span></td>
+            </tr>
+            <tr>
+              <td><strong>No Contract</strong></td>
+              <td><span class="badge stable">Yes</span></td>
+              <td><span class="badge stable">Yes</span></td>
+              <td><span class="badge stable">Yes</span></td>
+              <td><span class="badge stable">Yes</span></td>
+              <td><span class="badge stable">Yes</span></td>
+            </tr>
+            <tr>
+              <td><strong>Credit Check Required</strong></td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td><span class="badge stable">No</span></td>
+            </tr>
+            <tr>
+              <td><strong>Network</strong></td>
+              <td>Verizon (own)</td>
+              <td>T-Mobile (own)</td>
+              <td>AT&amp;T (own)</td>
+              <td>Verizon (MVNO)</td>
+              <td>AT&amp;T + T-Mobile (MVNO)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB: Home Internet -->
+    <div id="sctab-panel-home" style="display:none;">
+      <div class="card-head" style="padding:14px 0 10px 0;"><h2 style="font-size:15px;font-weight:600;">Home Internet Plans</h2><span style="font-size:11px;color:#aaa;">Sourced Apr 2026 · prices reflect AutoPay where applicable · availability varies by region</span></div>
+      <div class="card" style="margin-bottom:20px;overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th style="color:#CC0000;">Verizon Fios<br><small style="font-weight:400;">Fiber (NE US)</small></th>
+              <th style="color:#CC0000;">Verizon 5G Home<br><small style="font-weight:400;">Fixed Wireless</small></th>
+              <th style="color:#E20074;">T-Mobile<br><small style="font-weight:400;">5G Home Internet</small></th>
+              <th style="color:#00A8E0;">AT&amp;T Fiber<br><small style="font-weight:400;">21 states</small></th>
+              <th>Xfinity<br><small style="font-weight:400;">Cable (41 states)</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Entry Plan / Price</strong></td>
+              <td style="font-weight:700;">$49.99/mo<br><small style="color:#aaa;">300 Mbps symmetrical</small></td>
+              <td style="font-weight:700;">$50/mo<br><small style="color:#aaa;">Up to 100 Mbps</small></td>
+              <td style="font-weight:700;">$50/mo<br><small style="color:#aaa;">Rely — 133–415 Mbps</small></td>
+              <td style="font-weight:700;">$40/mo<br><small style="color:#aaa;">300 Mbps (12-mo promo)</small></td>
+              <td style="font-weight:700;">$30/mo<br><small style="color:#aaa;">NOW Internet 100 Mbps</small></td>
+            </tr>
+            <tr>
+              <td><strong>Gigabit Plan / Price</strong></td>
+              <td style="font-weight:700;">$89.99/mo<br><small style="color:#aaa;">Up to 940 Mbps symmetrical</small></td>
+              <td style="font-weight:700;">$75/mo<br><small style="color:#aaa;">5G Home Ultimate 300 Mbps</small></td>
+              <td style="font-weight:700;">$70/mo<br><small style="color:#aaa;">All-In — 133–415 Mbps</small></td>
+              <td style="font-weight:700;">$65/mo<br><small style="color:#aaa;">1 Gbps symmetrical (promo)</small></td>
+              <td style="font-weight:700;">$70/mo<br><small style="color:#aaa;">1 Gbps</small></td>
+            </tr>
+            <tr>
+              <td><strong>Max Speed Available</strong></td>
+              <td><span class="badge stable">2.3 Gbps symmetrical</span></td>
+              <td>300 Mbps</td>
+              <td>~415 Mbps typical</td>
+              <td><span class="badge stable">5 Gbps (limited avail.)</span></td>
+              <td>2 Gbps</td>
+            </tr>
+            <tr>
+              <td><strong>Technology</strong></td>
+              <td><span class="badge stable">True fiber (FTTH)</span></td>
+              <td>5G Fixed Wireless</td>
+              <td>5G Fixed Wireless</td>
+              <td><span class="badge stable">True fiber (FTTH)</span></td>
+              <td>Hybrid fiber-coax (cable)</td>
+            </tr>
+            <tr>
+              <td><strong>Symmetrical Upload</strong></td>
+              <td><span class="badge stable">Yes — full symmetrical</span></td>
+              <td><span class="badge threat">No</span></td>
+              <td><span class="badge threat">No</span></td>
+              <td><span class="badge stable">Yes — full symmetrical</span></td>
+              <td><span class="badge threat">No</span></td>
+            </tr>
+            <tr>
+              <td><strong>Data Cap</strong></td>
+              <td><span class="badge stable">None</span></td>
+              <td><span class="badge stable">None</span></td>
+              <td><span class="badge stable">None</span></td>
+              <td><span class="badge stable">None</span></td>
+              <td><span class="badge watch">1.2 TB/mo (overage charges)</span></td>
+            </tr>
+            <tr>
+              <td><strong>Contract Required</strong></td>
+              <td><span class="badge stable">No</span></td>
+              <td><span class="badge stable">No</span></td>
+              <td><span class="badge stable">No</span></td>
+              <td><span class="badge stable">No</span></td>
+              <td><span class="badge stable">No</span></td>
+            </tr>
+            <tr>
+              <td><strong>Taxes Included in Price</strong></td>
+              <td><span class="badge stable">Yes</span></td>
+              <td>No</td>
+              <td><span class="badge stable">Yes</span></td>
+              <td>No</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td><strong>Equipment Fee</strong></td>
+              <td><span class="badge stable">Included</span></td>
+              <td><span class="badge stable">Included (Wi-Fi 6 router)</span></td>
+              <td><span class="badge stable">Included (Wi-Fi 7 on Amplified+)</span></td>
+              <td><span class="badge stable">Included</span></td>
+              <td><span class="badge stable">Included</span></td>
+            </tr>
+            <tr>
+              <td><strong>Bundle Discount w/ Mobile</strong></td>
+              <td>Up to $15/mo off Fios</td>
+              <td>Up to $15/mo off 5G Home</td>
+              <td><span class="badge stable">$15/mo off when paired w/ T-Mobile wireless</span></td>
+              <td><span class="badge stable">20% off fiber + 20% off wireless when bundled</span></td>
+              <td>Free Xfinity Mobile line (1 yr) on 300 Mbps+</td>
+            </tr>
+            <tr>
+              <td><strong>Price Guarantee</strong></td>
+              <td><span class="badge threat">No</span></td>
+              <td><span class="badge threat">No</span></td>
+              <td><span class="badge stable">5-Year Price Guarantee</span></td>
+              <td><span class="badge threat">No (promo rates expire after 12 mo)</span></td>
+              <td><span class="badge stable">5-Year Price Guarantee (300 Mbps+)</span></td>
+            </tr>
+            <tr>
+              <td><strong>Self-Install Available</strong></td>
+              <td><span class="badge watch">Fiber may need tech visit</span></td>
+              <td><span class="badge stable">Yes — plug and play</span></td>
+              <td><span class="badge stable">Yes — plug and play</span></td>
+              <td><span class="badge watch">Fiber may need tech visit</span></td>
+              <td><span class="badge stable">Yes</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="font-size:11px;color:#aaa;margin-top:-10px;margin-bottom:20px;">* Boost/Dish does not offer a home internet product. AT&amp;T Internet Air (5G Fixed Wireless) available at $65/mo standalone or ~$47/mo bundled with AT&amp;T wireless.</div>
     </div>
 
     <div class="stats">
@@ -478,7 +633,7 @@ function alertHTML(a, full) {
 }
 
 function renderDashAlerts() {
-  var shown = alerts.filter(function(a) { return a.urgency === 'high' || a.urgency === 'medium'; }).slice(0, 4);
+  var shown = alerts.filter(function(a) { return a.status !== 'done'; }).slice(0, 10);
   var el = document.getElementById('dashAlerts');
   el.innerHTML = shown.map(function(a) { return alertHTML(a, false); }).join('');
 }
@@ -804,7 +959,7 @@ function fetchLiveNews() {
             renderNews();
             document.getElementById('newsFetchTime').textContent = 'Updated ' + new Date().toLocaleTimeString();
             alerts = alerts.filter(function(a) { return !a.fromNews; });
-            var newsAlerts = liveNews.slice(0, 10).map(function(n, i) { return newsToAlert(n, 900 + i); });
+            var newsAlerts = liveNews.slice(0, 20).map(function(n, i) { return newsToAlert(n, 900 + i); });
             alerts = newsAlerts.concat(alerts);
             renderDashAlerts();
             renderAlerts();
@@ -827,6 +982,23 @@ function fetchLiveNews() {
           }
         }
       });
+  });
+}
+
+function showScoreTab(tab) {
+  var tabs = ['protection','mobile','home'];
+  tabs.forEach(function(t) {
+    var panel = document.getElementById('sctab-panel-' + t);
+    var btn = document.getElementById('sctab-' + t);
+    if (t === tab) {
+      panel.style.display = 'block';
+      btn.style.borderBottomColor = '#CC0000';
+      btn.style.color = '#CC0000';
+    } else {
+      panel.style.display = 'none';
+      btn.style.borderBottomColor = 'transparent';
+      btn.style.color = '#666';
+    }
   });
 }
 

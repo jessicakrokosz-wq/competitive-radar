@@ -1052,45 +1052,45 @@ function fetchLiveNews() {
             sourceLabel: cls.label
           });
         }
+
+        // Progressive render — show results as each feed arrives
+        var seen = {};
+        liveNews = collected.filter(function(n) {
+          if (seen[n.title]) return false;
+          seen[n.title] = true;
+          return true;
+        });
+        liveNews.sort(function(a, b) { return new Date(b.pubDate) - new Date(a.pubDate); });
+        if (liveNews.length > 0) {
+          renderNews();
+          document.getElementById('newsFetchTime').textContent = 'Updated ' + new Date().toLocaleTimeString();
+          alerts = alerts.filter(function(a) { return !a.fromNews; });
+          var newsAlerts = liveNews.slice(0, 20).map(function(n, i) { return newsToAlert(n, 900 + i); });
+          alerts = newsAlerts.concat(alerts);
+          renderDashAlerts();
+          renderAlerts();
+          renderBrief();
+          var high = alerts.filter(function(a) { return a.urgency === 'high' && a.status === 'open'; }).length;
+          document.getElementById('notifCount').textContent = high;
+          document.getElementById('stat1').textContent = alerts.length;
+          document.getElementById('stat2').textContent = high;
+          document.getElementById('sc-high').textContent = high;
+          document.getElementById('sc-total').textContent = alerts.length;
+          document.getElementById('lastUpdated').textContent = 'Monitoring T-Mobile, AT&T, and 4 others · Updated ' + new Date().toLocaleTimeString();
+          var briefPage = document.getElementById('briefPageHeadlines');
+          if (briefPage) {
+            var top = liveNews.slice(0, 5);
+            briefPage.innerHTML = '<h3>Latest Headlines</h3><ul>' + top.map(function(n) {
+              return '<li><a href="' + n.url + '" target="_blank" rel="noopener" style="color:#ccc;">' + escHtml(n.title) + '</a></li>';
+            }).join('') + '</ul>';
+          }
+        }
       })
       .catch(function() {})
       .finally(function() {
         pending--;
-        if (pending === 0) {
-          var seen = {};
-          liveNews = collected.filter(function(n) {
-            if (seen[n.title]) return false;
-            seen[n.title] = true;
-            return true;
-          });
-          liveNews.sort(function(a, b) { return new Date(b.pubDate) - new Date(a.pubDate); });
-          if (liveNews.length === 0) {
-            document.getElementById('newsFeed').innerHTML = '<div class="news-error">Could not load live news — try clicking Refresh.</div>';
-          } else {
-            renderNews();
-            document.getElementById('newsFetchTime').textContent = 'Updated ' + new Date().toLocaleTimeString();
-            alerts = alerts.filter(function(a) { return !a.fromNews; });
-            var newsAlerts = liveNews.slice(0, 20).map(function(n, i) { return newsToAlert(n, 900 + i); });
-            alerts = newsAlerts.concat(alerts);
-            renderDashAlerts();
-            renderAlerts();
-            renderBrief();
-            var high = alerts.filter(function(a) { return a.urgency === 'high' && a.status === 'open'; }).length;
-            document.getElementById('notifCount').textContent = high;
-            document.getElementById('stat1').textContent = alerts.length;
-            document.getElementById('stat2').textContent = high;
-            document.getElementById('sc-high').textContent = high;
-            document.getElementById('sc-total').textContent = alerts.length;
-            document.getElementById('lastUpdated').textContent = 'Monitoring T-Mobile, AT&T, and 4 others · Updated ' + new Date().toLocaleTimeString();
-            // Update Weekly Brief page headlines
-            var briefPage = document.getElementById('briefPageHeadlines');
-            if (briefPage) {
-              var top = liveNews.slice(0, 5);
-              briefPage.innerHTML = '<h3>Latest Headlines</h3><ul>' + top.map(function(n) {
-                return '<li><a href="' + n.url + '" target="_blank" rel="noopener" style="color:#ccc;">' + escHtml(n.title) + '</a></li>';
-              }).join('') + '</ul>';
-            }
-          }
+        if (pending === 0 && liveNews.length === 0) {
+          document.getElementById('newsFeed').innerHTML = '<div class="news-error">Could not load live news — try clicking Refresh.</div>';
         }
       });
   });

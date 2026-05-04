@@ -155,9 +155,19 @@
     <div class="stats">
       <div class="stat"><div class="val" id="stat1">—</div><div class="lbl">Live Alerts Loaded</div><div class="delta neu" id="stat1d">Updates on refresh</div></div>
       <div class="stat"><div class="val" id="stat2">—</div><div class="lbl">High Urgency Alerts</div><div class="delta neg">Respond within 24h</div></div>
-      <div class="stat"><div class="val">4</div><div class="lbl">Competitors Monitored</div><div class="delta neu">T-Mobile, AT&amp;T, Verizon, Comcast</div></div>
+      <div class="stat"><div class="val">4</div><div class="lbl">Competitors Monitored</div><div class="delta neu">T-Mobile, AT&amp;T, Comcast, Boost</div></div>
       <div class="stat"><div class="val">Live</div><div class="lbl">Data Source</div><div class="delta pos">Google News RSS</div></div>
     </div>
+    <div class="card" style="margin-bottom:24px;">
+      <div class="card-head">
+        <h2>Unlimited Base Plan Pricing</h2>
+        <span id="pricingUpdated" style="font-size:11px;color:#aaa;">1-line · entry tier · sourced May 2026</span>
+      </div>
+      <div style="padding:12px 24px 0;font-size:12px;color:#888;font-style:italic;">* All prices reflect single-line, entry-tier unlimited plans with AutoPay where applicable. Taxes &amp; fees extra.</div>
+      <div style="padding:16px 24px;" id="pricingBars"></div>
+      <div style="padding:0 24px 14px;font-size:11px;color:#aaa;">Xfinity requires Xfinity internet subscription. Boost price locked forever. Sources: carrier websites, May 2026.</div>
+    </div>
+
     <div class="grid-2">
       <div class="card">
         <div class="card-head">
@@ -171,6 +181,7 @@
         <div id="teamFeed"></div>
       </div>
     </div>
+
     <div class="brief-dark" id="briefBlock"></div>
 
     <div class="card">
@@ -275,6 +286,10 @@
   </div>
 
   <div style="max-width:1200px;margin:0 auto;padding:28px 32px;">
+
+    <div style="background:#fff8e1;border-left:3px solid #c87800;border-radius:4px;padding:10px 16px;margin-bottom:20px;font-size:12px;color:#7a5000;">
+      * All pricing in this scorecard reflects <strong>single-line, entry-tier plans</strong> with AutoPay where applicable. Multi-line rates are lower. Taxes &amp; fees extra unless noted.
+    </div>
 
     <!-- TAB: Device Protection -->
     <div id="sctab-panel-protection">
@@ -437,9 +452,9 @@
           <tbody>
             <tr>
               <td><strong>Entry Unlimited Price</strong></td>
-              <td style="font-weight:700;">~$65/mo<br><small style="color:#aaa;">Welcome Unlimited</small></td>
-              <td style="font-weight:700;">$105/mo<br><small style="color:#aaa;">Experience Beyond (1 line)</small></td>
-              <td style="font-weight:700;">~$65–$75/mo<br><small style="color:#aaa;">Value 2.0</small></td>
+              <td style="font-weight:700;">$55/mo<br><small style="color:#aaa;">Welcome Unlimited · w/ AutoPay</small></td>
+              <td style="font-weight:700;">$50/mo<br><small style="color:#aaa;">Essentials Saver</small></td>
+              <td style="font-weight:700;">$50/mo<br><small style="color:#aaa;">Value 2.0</small></td>
               <td style="font-weight:700;">~$40/mo<br><small style="color:#aaa;">Requires Xfinity internet</small></td>
               <td style="font-weight:700;"><span class="badge stable">$25/mo</span><br><small style="color:#aaa;">Price locked forever</small></td>
             </tr>
@@ -1000,76 +1015,48 @@ function fetchLiveNews() {
   var pending = feeds.length;
   var collected = [];
 
+  function fetchFeed(feedUrl, onDone) {
+    var apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(feedUrl) + '&count=10';
+    var ctrl = new AbortController();
+    var t = setTimeout(function() { ctrl.abort(); onDone(null); }, 9000);
+    fetch(apiUrl, { signal: ctrl.signal })
+      .then(function(r) { clearTimeout(t); return r.json(); })
+      .then(function(data) { onDone((data.status === 'ok' && data.items) ? data.items : null); })
+      .catch(function() { clearTimeout(t); onDone(null); });
+  }
+
   feeds.forEach(function(feed) {
-    var proxyUrl = 'https://corsproxy.io/?' + encodeURIComponent(feed);
-
-    fetch(proxyUrl)
-      .then(function(r) { return r.text(); })
-      .then(function(text) {
-        var xml = (new DOMParser()).parseFromString(text, 'text/xml');
-        var items = xml.getElementsByTagName('item');
-        // Also handle Atom feeds (Verge uses Atom)
-        if (items.length === 0) items = xml.getElementsByTagName('entry');
-
+    fetchFeed(feed, function(items) {
+      if (items) {
         for (var i = 0; i < Math.min(items.length, 6); i++) {
           var item = items[i];
-
-          var titleEl = item.getElementsByTagName('title')[0];
-          var title = titleEl ? titleEl.textContent.trim() : '';
+          var title = (item.title || '').trim();
           if (!title) continue;
-
-          // Get URL from <link> tag
-          var url = '';
-          var linkEls = item.getElementsByTagName('link');
-          if (linkEls.length > 0) {
-            url = (linkEls[0].getAttribute('href') || linkEls[0].textContent || '').trim();
-          }
+          var url = (item.link || '').trim();
           if (!url || url.indexOf('http') !== 0) continue;
+          var pubDate = item.pubDate || '';
+          var desc = stripTags(item.description || item.content || '').substring(0, 130) + '...';
 
-          var pubDateEl = item.getElementsByTagName('pubDate')[0] || item.getElementsByTagName('updated')[0] || item.getElementsByTagName('published')[0];
-          var pubDate = pubDateEl ? pubDateEl.textContent.trim() : '';
-
-          var descEl = item.getElementsByTagName('description')[0] || item.getElementsByTagName('summary')[0] || item.getElementsByTagName('content')[0];
-          var desc = descEl ? stripTags(descEl.textContent).substring(0, 130) + '...' : '';
-
-          // Must mention a competitor — category match broadens relevance but is not required
-          // Exclude articles only about Verizon with no competitor mention
           var titleLower = title.toLowerCase();
-          var descLower = desc.toLowerCase();
-          var combined = titleLower + ' ' + descLower;
+          var combined = titleLower + ' ' + desc.toLowerCase();
           if (titleLower.indexOf('verizon') !== -1 && carrierKW.every(function(kw){ return combined.indexOf(kw) === -1; })) continue;
-          var hasCarrier = carrierKW.some(function(kw) { return combined.indexOf(kw) !== -1; });
-          if (!hasCarrier) continue;
+          if (!carrierKW.some(function(kw) { return combined.indexOf(kw) !== -1; })) continue;
+          var topicKW = ['plan','price','pricing','protection','insurance','discount','promo','promotion','credit','offer','deal','switch','unlimited','trade-in','free phone','free device','new plan','price cut','price drop','launch','feature','churn','cancel','bundle'];
+          if (!topicKW.some(function(kw) { return combined.indexOf(kw) !== -1; })) continue;
 
           var cls = classifySource(title, url);
-          collected.push({
-            title: title,
-            url: url,
-            snippet: desc,
-            time: timeAgo(pubDate),
-            pubDate: pubDate,
-            source: cls.source,
-            sourceLabel: cls.label
-          });
+          collected.push({ title:title, url:url, snippet:desc, time:timeAgo(pubDate), pubDate:pubDate, source:cls.source, sourceLabel:cls.label });
         }
 
-        // Progressive render — show results as each feed arrives
         var seen = {};
-        liveNews = collected.filter(function(n) {
-          if (seen[n.title]) return false;
-          seen[n.title] = true;
-          return true;
-        });
+        liveNews = collected.filter(function(n) { if (seen[n.title]) return false; seen[n.title]=true; return true; });
         liveNews.sort(function(a, b) { return new Date(b.pubDate) - new Date(a.pubDate); });
         if (liveNews.length > 0) {
           renderNews();
           document.getElementById('newsFetchTime').textContent = 'Updated ' + new Date().toLocaleTimeString();
           alerts = alerts.filter(function(a) { return !a.fromNews; });
-          var newsAlerts = liveNews.slice(0, 20).map(function(n, i) { return newsToAlert(n, 900 + i); });
-          alerts = newsAlerts.concat(alerts);
-          renderDashAlerts();
-          renderAlerts();
-          renderBrief();
+          alerts = liveNews.slice(0, 20).map(function(n, i) { return newsToAlert(n, 900 + i); }).concat(alerts);
+          renderDashAlerts(); renderAlerts(); renderBrief();
           var high = alerts.filter(function(a) { return a.urgency === 'high' && a.status === 'open'; }).length;
           document.getElementById('notifCount').textContent = high;
           document.getElementById('stat1').textContent = alerts.length;
@@ -1079,20 +1066,17 @@ function fetchLiveNews() {
           document.getElementById('lastUpdated').textContent = 'Monitoring T-Mobile, AT&T, and 4 others · Updated ' + new Date().toLocaleTimeString();
           var briefPage = document.getElementById('briefPageHeadlines');
           if (briefPage) {
-            var top = liveNews.slice(0, 5);
-            briefPage.innerHTML = '<h3>Latest Headlines</h3><ul>' + top.map(function(n) {
+            briefPage.innerHTML = '<h3>Latest Headlines</h3><ul>' + liveNews.slice(0,5).map(function(n) {
               return '<li><a href="' + n.url + '" target="_blank" rel="noopener" style="color:#ccc;">' + escHtml(n.title) + '</a></li>';
             }).join('') + '</ul>';
           }
         }
-      })
-      .catch(function() {})
-      .finally(function() {
-        pending--;
-        if (pending === 0 && liveNews.length === 0) {
-          document.getElementById('newsFeed').innerHTML = '<div class="news-error">Could not load live news — try clicking Refresh.</div>';
-        }
-      });
+      }
+      pending--;
+      if (pending === 0 && liveNews.length === 0) {
+        document.getElementById('newsFeed').innerHTML = '<div class="news-error">Could not load live news — try clicking Refresh.</div>';
+      }
+    });
   });
 }
 
@@ -1113,11 +1097,48 @@ function showScoreTab(tab) {
   });
 }
 
+// PRICING CHART DATA — updated weekly by Claude
+var pricingData = {
+  updated: 'May 2026',
+  carriers: [
+    { name: 'Boost Mobile',   plan: 'Unlimited',        price: 25, color: '#FF6600' },
+    { name: 'Xfinity Mobile', plan: 'Mobile Select',    price: 30, color: '#555555' },
+    { name: 'AT&T',           plan: 'Value 2.0',        price: 50, color: '#00A8E0' },
+    { name: 'T-Mobile',       plan: 'Essentials Saver', price: 50, color: '#E20074' },
+    { name: 'Verizon',        plan: 'Welcome Unlimited',price: 55, color: '#CC0000' }
+  ]
+};
+
+function renderPricingChart() {
+  var el = document.getElementById('pricingBars');
+  var ts = document.getElementById('pricingUpdated');
+  if (!el) return;
+  if (ts) ts.textContent = '1-line \u00b7 entry tier \u00b7 sourced ' + pricingData.updated;
+  var max = Math.max.apply(null, pricingData.carriers.map(function(d) { return d.price; }));
+  el.innerHTML = pricingData.carriers.map(function(d) {
+    var pct = Math.round((d.price / (max * 1.15)) * 100);
+    var isVz = d.name === 'Verizon';
+    return '<div style="margin-bottom:14px;">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">' +
+      '<span style="font-size:13px;font-weight:' + (isVz ? '700' : '500') + ';color:' + (isVz ? '#CC0000' : '#333') + ';">' +
+      d.name + (isVz ? ' \u2605' : '') + '</span>' +
+      '<span style="font-size:13px;font-weight:700;color:' + (isVz ? '#CC0000' : '#555') + ';">$' + d.price + '/mo</span>' +
+      '</div>' +
+      '<div style="background:#f0f0f0;border-radius:4px;height:26px;overflow:hidden;">' +
+      '<div style="width:' + pct + '%;height:100%;background:' + d.color + ';border-radius:4px;display:flex;align-items:center;padding-left:10px;min-width:4px;' + (isVz ? 'box-shadow:0 0 0 2px #aa0000 inset;' : '') + '">' +
+      '<span style="font-size:11px;color:white;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + d.plan + '</span>' +
+      '</div>' +
+      '</div>' +
+      '</div>';
+  }).join('');
+}
+
 // Init
 renderDashAlerts();
 renderTeamFeed();
 renderBrief();
 renderAlerts();
+renderPricingChart();
 fetchLiveNews();
 </script>
 </body>
